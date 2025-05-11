@@ -1,14 +1,13 @@
 {
   "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ],
+  "references": [],
+
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "target": "ES6",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"]
 }

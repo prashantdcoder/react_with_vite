@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
 import "./App.css";
 import { Button } from "./components/ui/button";
+import React from 'react';
 
 const App = () => {
   return (

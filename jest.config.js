@@ -1,16 +1,14 @@
 export default {
-  testEnvironment: "jsdom",
-  collectCoverage: true, // Enable coverage collection
-  collectCoverageFrom: [
-    "src/**/*.{js,jsx}",
-    "!src/main.jsx", // Exclude entry point
-  ],
-  coverageReporters: ["json", "text", "lcov", "clover"], // Different report formats
-  moduleNameMapper: {
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy" // Mock CSS imports
-  },
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
   },
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"]
+  moduleNameMapper: {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  },
+  transformIgnorePatterns: [
+    "/node_modules/(?!shadcn-ui|some-other-esm-package)/"
+  ]
 };
