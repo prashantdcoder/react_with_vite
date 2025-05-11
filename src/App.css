@@ -1,0 +1,130 @@
+.dashboard-container {
+    padding: 25px;
+    height: 100%;
+    width: 100%;
+}
+
+.ricky-martin-list-item-container {
+    border: none;
+    width: 350px;
+    padding: 15px;
+    height: 475px;
+    box-shadow: 0px 3px 3px 0px #8b87875e;
+}
+
+.item-group-container {
+    padding: 4px;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.justify-space-btwn {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.status-badge-container {
+    width: auto;
+    text-align: center;
+    border-radius: 18px;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.bg-green {
+    background: #58a958ab;
+    color: white;
+}
+
+.bg-red {
+    background: rgb(231, 52, 52);
+    color: white;
+}
+
+.bg-gray {
+    background: rgba(175, 165, 165, 0.897);
+    color: white;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar-container, img {
+    width: 200px;
+    height: 200px;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.profile-container {
+    margin-top: 8px;
+}
+
+.profile-container h3 {
+    color: #141313cc;
+}
+
+.profile-item {
+    padding: 3px 0px;
+}
+
+.profile-container >span:nth-child(2) {
+    color: #8b8787b3;
+    font-weight: 600;
+}
+
+.profile-container >span:nth-child(3) {
+    color: #2393e5bf;
+    font-weight: 600;
+}
+
+.meta-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 2px;
+}
+
+.footer {
+    margin-top: 4px;
+    padding: 12px 0px;
+    text-align: center;
+    background: #5aaeed;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.list-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 15px 15px;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+}
+
+.main-app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
