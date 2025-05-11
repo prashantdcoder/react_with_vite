@@ -1,0 +1,13 @@
+{
+  "files": [],
+  "references": [],
+
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "target": "ES6",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"]
+}
