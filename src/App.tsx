@@ -1,11 +1,15 @@
 import "./App.css";
-import { Button } from "./components/ui/button";
-import React from 'react';
+import SideNav from "./components/SideNav/SideNav";
+import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
+import React from "react";
 
 const App = () => {
   return (
     <div className="main-app">
-      <Button className="cursor-pointer">Click Me</Button>
+      <SidebarProvider>
+        <SidebarTrigger />
+        <SideNav />
+      </SidebarProvider>
     </div>
   );
 };
