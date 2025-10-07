@@ -1,7 +1,8 @@
 import "./App.css";
+import CheckboxTree from "./components/CheckboxTree/CheckboxTree";
 import SideNav from "./components/SideNav/SideNav";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
-import React from "react";
+import { permissions } from "./data/appData";
 
 const App = () => {
   return (
@@ -9,6 +10,9 @@ const App = () => {
       <SidebarProvider>
         <SidebarTrigger />
         <SideNav />
+        <div>
+          <CheckboxTree initialData={permissions}  />
+        </div>
       </SidebarProvider>
     </div>
   );
