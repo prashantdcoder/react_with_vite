@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import CheckboxTree from "./components/CheckboxTree/CheckboxTree";
 import SideNav from "./components/SideNav/SideNav";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";

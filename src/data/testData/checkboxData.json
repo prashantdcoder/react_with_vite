@@ -1,0 +1,53 @@
+[
+    {
+        "id": "fruits",
+        "label": "Fruits",
+        "checked": false,
+        "children": [
+            {
+                "id": "apple",
+                "label": "Apple",
+                "checked": false
+            },
+            {
+                "id": "banana",
+                "label": "Banana",
+                "checked": false
+            },
+            {
+                "id": "citrus",
+                "label": "Citrus",
+                "checked": false,
+                "children": [
+                    {
+                        "id": "orange",
+                        "label": "Orange",
+                        "checked": false
+                    },
+                    {
+                        "id": "lemon",
+                        "label": "Lemon",
+                        "checked": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "vegetables",
+        "label": "Vegetables",
+        "checked": false,
+        "children": [
+            {
+                "id": "carrot",
+                "label": "Carrot",
+                "checked": false
+            },
+            {
+                "id": "broccoli",
+                "label": "Broccoli",
+                "checked": false
+            }
+        ]
+    }
+]

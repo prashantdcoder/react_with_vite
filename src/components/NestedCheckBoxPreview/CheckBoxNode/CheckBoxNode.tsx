@@ -24,6 +24,7 @@ const CheckBoxNode: React.FC<CheckBoxNodeProps> = ({
   return (
     <label className="flex items-center gap-2">
       <Checkbox
+        data-testid={`checkbox-${id}`}
         value={label}
         checked={isChecked}
         onCheckedChange={handleChange}
