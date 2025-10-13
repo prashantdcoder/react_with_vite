@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Checkbox } from "../../ui/checkbox";
 
 interface CheckBoxNodeProps {
@@ -14,10 +14,7 @@ const CheckBoxNode: React.FC<CheckBoxNodeProps> = ({
   onChangeHandler,
   id,
 }) => {
-
-  const [isChecked, setIsChecked] = useState(checked);
   const handleChange = (checkedState: boolean) => {
-    setIsChecked(checkedState);
     onChangeHandler(id, checkedState);
   };
 
@@ -26,7 +23,7 @@ const CheckBoxNode: React.FC<CheckBoxNodeProps> = ({
       <Checkbox
         data-testid={`checkbox-${id}`}
         value={label}
-        checked={isChecked}
+        checked={checked}
         onCheckedChange={handleChange}
       />
       {label}

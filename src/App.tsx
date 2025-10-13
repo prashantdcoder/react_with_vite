@@ -3,7 +3,7 @@ import React from "react";
 import CheckboxTree from "./components/CheckboxTree/CheckboxTree";
 import SideNav from "./components/SideNav/SideNav";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
-import { permissions } from "./data/appData";
+import { permissions, printers } from "./data/appData";
 
 const App = () => {
   return (

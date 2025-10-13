@@ -7,7 +7,7 @@ interface NestedCheckBoxPreviewProps {
     onChangeHandler: (id: number, checked: boolean) => void;
 }
 const NestedCheckBoxPreview = ({ checkboxData, onChangeHandler }: NestedCheckBoxPreviewProps) => {
-
+        
     return (
         <div data-testid="nested-checkbox-preview">
             {checkboxData.map((item) => {

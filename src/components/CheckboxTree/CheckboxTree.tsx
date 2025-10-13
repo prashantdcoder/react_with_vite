@@ -1,55 +1,38 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import NestedCheckBoxPreview from "../NestedCheckBoxPreview/NestedCheckBoxPreview";
 import { ICheckBoxNode } from "../../utils/types";
 
 const CheckboxTree = ({ initialData }: { initialData: ICheckBoxNode[] }) => {
   const [checkboxData, setCheckboxData] = useState(() => [...initialData]);
 
-  const updateChildrenRecursively = (nodes: ICheckBoxNode[], ch: boolean): ICheckBoxNode[] => {
-    return nodes.map((node) => {
+  const updateChildrenRecursively = (children: ICheckBoxNode[], checked: boolean): ICheckBoxNode[] => {
+    return children.map((node: ICheckBoxNode) => {
       return {
         ...node,
-        checked: ch,
-        children: updateChildrenRecursively(node.children, ch),
+        checked,
+        children: node.children && node.children.length > 0 ? updateChildrenRecursively(node.children, checked) : [],
       };
     });
   };
-
-  const updateNodeRecursively = (nodes: ICheckBoxNode[], clickedNode: ICheckBoxNode, ch: boolean): ICheckBoxNode[] => {
-    return nodes.map((node) => {
-      if (node.id === clickedNode.id) {
-        return {
+  
+  const updateNode = (nodes: ICheckBoxNode[], checked: boolean, id: number): ICheckBoxNode[] => {
+      return nodes.map(node => {
+        if (node.id === id) {
+          return {
+            ...node,
+            checked,
+            children: updateChildrenRecursively(node.children, checked),
+          };
+        }
+        return updateNode(node.children, checked, id).length > 0 ? {
           ...node,
-          checked: ch,
-          children: [...clickedNode.children],
-        }
-      }
-      return {
-        ...node,
-        children: node.children && node.children.length > 0 ? updateNodeRecursively(node.children, clickedNode, ch) : [],
-      };
-    });
-  }
-
-  const findNodeRecursively = (nodes: ICheckBoxNode[], id: number, ch: boolean): ICheckBoxNode | undefined => {
-    for (let node of nodes) {
-      if (node.id === id) {
-        return { ...node, checked: ch };
-      } else if (node.children && node.children.length > 0) {
-        const found = findNodeRecursively(node.children, id, ch);
-        if (found) {
-          return { ...found, checked: ch };
-        }
-      }
-    }
-    return undefined;
-  }
+          children: updateNode(node.children, checked, id),
+        } : node;
+      });
+    };
 
   const onChangeHandler = (id: number, checked: boolean) => {
-    const clickedCheckboxNode: ICheckBoxNode = findNodeRecursively(checkboxData, id, checked);
-    clickedCheckboxNode.children = updateChildrenRecursively(clickedCheckboxNode.children, checked);
-    const _updateData: ICheckBoxNode[] = updateNodeRecursively(checkboxData, clickedCheckboxNode, checked);
-    setCheckboxData(_updateData);
+    setCheckboxData((prev) => updateNode(prev, checked, id));
   };
 
   const MemoisedCheckboxPreview = useCallback((preview: { data: ICheckBoxNode[], changeHandler: (id: number, checked: boolean) => void }) => {
@@ -59,7 +42,8 @@ const CheckboxTree = ({ initialData }: { initialData: ICheckBoxNode[] }) => {
 
   return (
     <div>
-      <MemoisedCheckboxPreview data={checkboxData} changeHandler={onChangeHandler} />
+      {/* <MemoisedCheckboxPreview data={checkboxData} changeHandler={onChangeHandler} /> */}
+      <NestedCheckBoxPreview checkboxData={checkboxData} onChangeHandler={onChangeHandler} />
     </div>
   );
 };
