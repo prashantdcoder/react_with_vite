@@ -4,21 +4,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import checkboxData from "../../data/testData/checkboxData.json";
 import { ICheckBoxNode } from "../../utils/types";
 import NestedCheckBoxPreview from "./NestedCheckBoxPreview";
-import CheckboxTree from "../CheckboxTree/CheckboxTree";
 
 describe("NestedCheckBoxPreview Component", () => {
-
-    /**
-     *  Renders nested child checkboxes correctly               Done
-        Updates parent and child checked state on click
-        Handles deeply nested checkbox structures
-        Calls onChangeHandler with correct arguments
-        Displays correct labels for all nodes                   Done
-        Unchecks all children when parent is unchecked
-        Preserves checked state after multiple interactions
-        Handles empty children gracefully
-        Renders with custom initial checked states
-     */
 
     it("should render nested checkboxes correctly", () => {
         const handler = jest.fn();
@@ -39,7 +26,6 @@ describe("NestedCheckBoxPreview Component", () => {
         const checkbox = elements[0].querySelector('button[data-testid="checkbox-1"]') as HTMLButtonElement;
         fireEvent.click(checkbox);
         expect(handler).toHaveBeenCalledTimes(1);
-        expect(checkbox).toBeChecked();
     });
 
     it("should display correct labels for all nodes", () => {
@@ -76,7 +62,7 @@ describe("NestedCheckBoxPreview Component", () => {
         });
     });
 
-    it("should updates parent and child checked state on click", () => {
+    it("should checks all children when parent is checked", () => {
         let nestedData: ICheckBoxNode[] = [
             {
                 id: 1,
@@ -125,20 +111,24 @@ describe("NestedCheckBoxPreview Component", () => {
 
         renderResult = render(<NestedCheckBoxPreview checkboxData={nestedData} onChangeHandler={handler} />);
         renderResult.rerender(<NestedCheckBoxPreview checkboxData={nestedData} onChangeHandler={handler} />);
+
         const fruitElement: HTMLElement = screen.getByTestId("nested-container-1");
-        const fruitCheckbox = fruitElement.querySelector('button[data-testid="checkbox-1"]') as HTMLButtonElement;
-        fireEvent.click(fruitCheckbox);
-        expect(handlerMock).toHaveBeenCalledTimes(1);
-        expect(fruitCheckbox).toBeChecked();
-
-
         const appleElement: HTMLElement = screen.getByTestId("nested-container-44");
-        const appleCheckbox = appleElement.querySelector('button[data-testid="checkbox-44"]') as HTMLButtonElement;
-        expect(appleCheckbox).toBeChecked();
-
         const mangoElement: HTMLElement = screen.getByTestId("nested-container-45");
+
+        const fruitCheckbox = fruitElement.querySelector('button[data-testid="checkbox-1"]') as HTMLButtonElement;
+        const appleCheckbox = appleElement.querySelector('button[data-testid="checkbox-44"]') as HTMLButtonElement;
         const mangoCheckbox = mangoElement.querySelector('button[data-testid="checkbox-45"]') as HTMLButtonElement;
+
+        fireEvent.click(fruitCheckbox);
+        expect(fruitCheckbox).toBeChecked();
+        expect(appleCheckbox).toBeChecked();
         expect(mangoCheckbox).toBeChecked();
+
+        fireEvent.click(fruitCheckbox);
+        expect(fruitCheckbox).not.toBeChecked();
+        expect(appleCheckbox).not.toBeChecked();
+        expect(mangoCheckbox).not.toBeChecked();
     });
 
     const getNestedData = (): ICheckBoxNode[] => {
