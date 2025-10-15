@@ -3,8 +3,9 @@ import "./App.css";
 import CheckboxTree from "./components/CheckboxTree/CheckboxTree";
 import SideNav from "./components/SideNav/SideNav";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
-import { permissions } from "./data/appData";
+
 import React from "react";
+import CheckboxProblemPage from "./pages/CheckboxProblemPage";
 
 const App: React.FC = () => {
   return (
@@ -13,11 +14,8 @@ const App: React.FC = () => {
         <SidebarTrigger />
         <SideNav />
         <Routes>
-          <Route path="/" element={<CheckboxTree initialData={permissions}  />} />
+          <Route path="/" element={<CheckboxProblemPage />} />
         </Routes>
-        <div>
-          
-        </div>
       </SidebarProvider>
     </div>
   );

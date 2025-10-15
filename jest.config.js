@@ -1,15 +1,15 @@
 export default {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   },
   moduleNameMapper: {
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!shadcn-ui|some-other-esm-package)/"
+    "/node_modules/(?!shadcn-ui|some-other-esm-package)/",
   ],
-   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
 };
