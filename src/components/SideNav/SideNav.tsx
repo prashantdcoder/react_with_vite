@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Calendar, FileUpIcon, Inbox, Search, Settings } from "lucide-react";
+import { ClipboardCheck } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -12,35 +12,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "../ui/sidebar";
-import React from 'react';
+import React from "react";
 
-const SideNav = () => {
+const SideNav: React.FC = () => {
   const items = [
     {
-      title: "File Upload",
-      url: "#",
-      icon: FileUpIcon,
-    },
-    {
-      title: "Inbox",
-      url: "#",
-      icon: Inbox,
-    },
-    {
-      title: "Calendar",
-      url: "#",
-      icon: Calendar,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: Search,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings,
-    },
+      title: "Checkbox Problem",
+      url: "/",
+      icon: ClipboardCheck,
+    }
   ];
   return (
     <>

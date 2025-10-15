@@ -1,19 +1,21 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import React from "react";
 import CheckboxTree from "./components/CheckboxTree/CheckboxTree";
 import SideNav from "./components/SideNav/SideNav";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
-import { permissions, printers } from "./data/appData";
 
-const App = () => {
+import React from "react";
+import CheckboxProblemPage from "./pages/CheckboxProblemPage";
+
+const App: React.FC = () => {
   return (
     <div className="main-app">
       <SidebarProvider>
         <SidebarTrigger />
         <SideNav />
-        <div>
-          <CheckboxTree initialData={permissions}  />
-        </div>
+        <Routes>
+          <Route path="/" element={<CheckboxProblemPage />} />
+        </Routes>
       </SidebarProvider>
     </div>
   );
