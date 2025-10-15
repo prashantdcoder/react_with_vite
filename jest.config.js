@@ -10,5 +10,6 @@ export default {
   },
   transformIgnorePatterns: [
     "/node_modules/(?!shadcn-ui|some-other-esm-package)/"
-  ]
+  ],
+   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };
