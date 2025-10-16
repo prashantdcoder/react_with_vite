@@ -6,4 +6,14 @@ interface ICheckBoxNode {
     children: ICheckBoxNode[];
 }
 
-export { ICheckBoxNode };
+interface ThemeContextProp {
+    theme: ThemeMode,
+    toggleTheme: () => void;
+}
+
+enum ThemeMode {
+    LIGHT = "Light",
+    DARK = "Dark"
+}
+
+export { ICheckBoxNode, ThemeMode, ThemeContextProp };

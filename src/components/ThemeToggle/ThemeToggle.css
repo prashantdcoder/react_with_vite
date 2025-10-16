@@ -1,0 +1,18 @@
+.theme-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.toggle-btn {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.toggle-btn:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
