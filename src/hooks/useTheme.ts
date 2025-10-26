@@ -5,7 +5,7 @@ import { ThemeContextProp } from '../utils/types';
 const useTheme = () => {
     const themeContext = React.useContext<ThemeContextProp>(ThemeContext);
     if (!themeContext) {
-        throw Error('use theme context within provider');
+        throw Error('useTheme must be used within a ThemeProvider');
     }
     const { theme, toggleTheme } = themeContext;
     return { theme, toggleTheme };
