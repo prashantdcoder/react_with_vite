@@ -25,6 +25,11 @@ const SideNav: React.FC = () => {
       title: "Theme Change Problem",
       url: "/theme-problem",
       icon: ClipboardCheck,
+    },
+    {
+      title: "Drag and Drop List Problem",
+      url: "/drag-list-problem",
+      icon: ClipboardCheck,
     }
   ];
   return (

@@ -1,0 +1,38 @@
+import React from 'react'
+import { DragContainerProps, DragItem as DragItemModel } from '../../utils/types'
+import DragItem from '../DragItem/DragItem'
+
+const DragContainer: React.FC<DragContainerProps> = ({ isDraggable, items }) => {
+    const [sortableItems, setSortableItems] = React.useState<DragItemModel[]>([...items]);
+    const latestPostionRef = React.useRef<number>(0);
+
+    const onDragStart = (e: React.DragEvent<HTMLDivElement>, item: DragItemModel, position: number): void => {
+        latestPostionRef.current = position;
+    }
+
+    const onDragOver = (e: React.DragEvent<HTMLDivElement>, item: DragItemModel, position: number): void => {
+        e.preventDefault();
+        const latestPosition: number = latestPostionRef.current;
+        const experimentItems = [...sortableItems];
+        const [draggedItem] = experimentItems.splice(position, 1);
+        experimentItems.splice(latestPosition, 0, draggedItem);
+        setSortableItems(experimentItems);
+    }
+
+    return (
+        <div className='drag-container flex flex-col gap-2 p-4 cursor-grab'>
+            {
+                sortableItems.map((item, index) =>
+                    <DragItem
+                        key={item.id}
+                        item={item}
+                        position={index}
+                        onDragStart={onDragStart}
+                        onDragOver={onDragOver}
+                    />)
+            }
+        </div>
+    )
+}
+
+export default DragContainer

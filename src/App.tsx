@@ -6,6 +6,7 @@ import React from "react";
 import CheckboxProblemPage from "./pages/CheckboxProblemPage";
 import ThemeChangeProblemPage from "./pages/ThemeChangeProblemPage";
 import ThemeProvider from "./context/ThemeToggleContext";
+import DragAndDropListProblemPage from "./pages/DragAndDropListProblemPage";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<CheckboxProblemPage />} />
             <Route path="/theme-problem" element={<ThemeChangeProblemPage />} />
+            <Route path="/drag-list-problem" element={<DragAndDropListProblemPage />} />
           </Routes>
         </SidebarProvider>
       </ThemeProvider>
