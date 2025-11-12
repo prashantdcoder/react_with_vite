@@ -23,6 +23,7 @@ interface DragItem {
 }
 
 interface DragItemProps {
+    isDraggable: boolean;
     item: DragItem;
     position?: number;
     onDragStart: (e: React.DragEvent<HTMLDivElement>, item: DragItem, position: number) => void;

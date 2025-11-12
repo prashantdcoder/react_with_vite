@@ -7,11 +7,12 @@ const DragContainer: React.FC<DragContainerProps> = ({ isDraggable, items }) => 
     const latestPostionRef = React.useRef<number>(0);
 
     const onDragStart = (e: React.DragEvent<HTMLDivElement>, item: DragItemModel, position: number): void => {
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", item.id.toString());
         latestPostionRef.current = position;
     }
 
     const onDragOver = (e: React.DragEvent<HTMLDivElement>, item: DragItemModel, position: number): void => {
-        e.preventDefault();
         const latestPosition: number = latestPostionRef.current;
         const experimentItems = [...sortableItems];
         const [draggedItem] = experimentItems.splice(position, 1);
@@ -24,6 +25,7 @@ const DragContainer: React.FC<DragContainerProps> = ({ isDraggable, items }) => 
             {
                 sortableItems.map((item, index) =>
                     <DragItem
+                        isDraggable={isDraggable}
                         key={item.id}
                         item={item}
                         position={index}
