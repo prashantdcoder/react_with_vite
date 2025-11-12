@@ -13,20 +13,6 @@ describe("DragContainer Component", () => {
     beforeEach(() => {
         jest.clearAllMocks();
     });
-    /**
-    
-
-should update latestPostionRef when dragging starts
-should call onDragStart with correct item and position
-should prevent default behavior during onDragOver
-should reorder items correctly when dragged over another item
-should update state with new item order after drag over
-should render DragItem components with correct props
-should maintain item keys correctly during reordering
-should not reorder items if dragged over the same position
-should match snapshot before and after drag reorder
-should support toggling draggable behavior via isDraggable prop
-     */
 
     it("should render DragContainer component", () => {
         const { container } = render(<DragContainer isDraggable={true} items={[]} />);
@@ -67,4 +53,20 @@ should support toggling draggable behavior via isDraggable prop
         expect(thirdItemProps.item).toEqual(thirdItem);
         expect(thirdItemProps.position).toBe(2);
     });
+
+    it("should update latestPostionRef when dragging starts", () => {
+        const mockRef = { current: null };
+        jest.spyOn(React, "useRef").mockReturnValue(mockRef);
+        render(<DragContainer isDraggable={true} items={mockItems} />);
+        const dragItemCalls = (DragItem as jest.Mock).mock.calls;
+        const firstItem = mockItems[0];
+        const firstItemProps = dragItemCalls[0][0];
+        const mockEvent = { dataTransfer: { setData: jest.fn() } } as any;
+        act(() => {
+            firstItemProps.onDragStart(mockEvent, firstItem, 1);
+            expect(mockRef.current).toBe(1);
+            firstItemProps.onDragOver(mockEvent, firstItem, 0);
+            expect(mockRef.current).toBe(null);
+        })
+    })
 });

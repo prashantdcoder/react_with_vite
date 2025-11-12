@@ -4,7 +4,7 @@ import DragItem from '../DragItem/DragItem'
 
 const DragContainer: React.FC<DragContainerProps> = ({ isDraggable, items }) => {
     const [sortableItems, setSortableItems] = React.useState<DragItemModel[]>([...items]);
-    const latestPostionRef = React.useRef<number>(0);
+    const latestPostionRef = React.useRef<number | null>(0);
 
     const onDragStart = (e: React.DragEvent<HTMLDivElement>, item: DragItemModel, position: number): void => {
         e.dataTransfer.effectAllowed = "move";
@@ -17,6 +17,7 @@ const DragContainer: React.FC<DragContainerProps> = ({ isDraggable, items }) => 
         const experimentItems = [...sortableItems];
         const [draggedItem] = experimentItems.splice(position, 1);
         experimentItems.splice(latestPosition, 0, draggedItem);
+        latestPostionRef.current = null;
         setSortableItems(experimentItems);
     }
 
