@@ -1,15 +1,12 @@
-import React, { useRef } from 'react'
-import { Item, ItemContent, ItemDescription, ItemTitle } from '../ui/item'
+import React from 'react';
 import { DragItemProps } from '../../utils/types';
+import { Item, ItemContent, ItemDescription, ItemTitle } from '../ui/item';
 
 const DragItem: React.FC<DragItemProps> = ({ onDragStart, item, position, onDragOver, isDraggable }) => {
-
-    const itemRef = useRef<HTMLDivElement>(null);
     const { heading, content } = item;
     return (
         <div
             data-testid={`drag-item-${item.id}`}
-            ref={itemRef}
             draggable={isDraggable}
             onDragEnter={(e) => onDragStart(e, item, position)}
             onDragEnd={(e) => onDragOver(e, item, position)}
