@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "heading": "Dashboard Overview",
+    "content": "Displays key performance metrics and trends."
+  },
+  {
+    "id": 2,
+    "heading": "User Management",
+    "content": "Add, update, or remove user access and roles."
+  },
+  {
+    "id": 3,
+    "heading": "Reports & Analytics",
+    "content": "Generate detailed reports for business insights."
+  },
+  {
+    "id": 4,
+    "heading": "Notifications Center",
+    "content": "Manage system alerts and in-app messages."
+  },
+  {
+    "id": 5,
+    "heading": "Settings",
+    "content": "Configure preferences and system-level options."
+  },
+  {
+    "id": 6,
+    "heading": "Project Tracker",
+    "content": "Monitor ongoing projects and task progress."
+  },
+  {
+    "id": 7,
+    "heading": "File Manager",
+    "content": "Upload, organize, and access project files securely."
+  },
+  {
+    "id": 8,
+    "heading": "Integration Hub",
+    "content": "Connect third-party services and APIs."
+  },
+  {
+    "id": 9,
+    "heading": "Audit Logs",
+    "content": "View history of user activities and system changes."
+  },
+  {
+    "id": 10,
+    "heading": "Support Center",
+    "content": "Access help articles or contact support teams."
+  }
+]

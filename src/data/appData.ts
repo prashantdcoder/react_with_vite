@@ -1,4 +1,4 @@
-import { ICheckBoxNode } from "../utils/types";
+import { DragItem, ICheckBoxNode } from "../utils/types";
 
 const shoppingList: ICheckBoxNode[] = [
     {
@@ -468,4 +468,22 @@ const printers: ICheckBoxNode[] = [
     }
 ]
 
-export { permissions, shoppingList, groceries, userManagement, printers };
+const dragAndDropList: DragItem[] = [
+    {
+        id: 1,
+        heading: 'Java',
+        content: 'Java is a high-level, object-oriented programming language and computing platform'
+    },
+    {
+        id: 2,
+        heading: 'React',
+        content: 'React is the library for web and native user interfaces. Build user interfaces out of individual pieces called components written in JavaScript'
+    },
+    {
+        id: 3,
+        heading: 'Python',
+        content: 'Python is a programming language that lets you work quickly and integrate systems more effectively'
+    }
+]
+
+export { permissions, shoppingList, groceries, userManagement, printers, dragAndDropList };

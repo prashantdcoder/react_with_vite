@@ -11,9 +11,39 @@ interface ThemeContextProp {
     toggleTheme: () => void;
 }
 
+interface DragContainerProps {
+    isDraggable: boolean;
+    items: DragItem[];
+}
+
+interface DragItem {
+    id: number;
+    heading: string,
+    content: string;
+}
+
+interface DragItemProps {
+    isDraggable: boolean;
+    item: DragItem;
+    position?: number;
+    onDragStart: (e: React.DragEvent<HTMLDivElement>, item: DragItem, position: number) => void;
+    onDragOver: (e: React.DragEvent<HTMLDivElement>, item: DragItem, position: number) => void;
+}
+
+
+/********************* Enums************************************ */
+
 enum ThemeMode {
     LIGHT = "Light",
     DARK = "Dark"
 }
 
-export { ICheckBoxNode, ThemeMode, ThemeContextProp };
+
+export {
+    ICheckBoxNode,
+    ThemeMode,
+    ThemeContextProp,
+    DragContainerProps,
+    DragItem,
+    DragItemProps
+};
