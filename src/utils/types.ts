@@ -30,6 +30,12 @@ interface DragItemProps {
     onDragOver: (e: React.DragEvent<HTMLDivElement>, item: DragItem, position: number) => void;
 }
 
+interface SideNavItem {
+    title: string;
+    url: string;
+    icon: React.ComponentType<any>;
+}
+
 
 /********************* Enums************************************ */
 
@@ -45,5 +51,6 @@ export {
     ThemeContextProp,
     DragContainerProps,
     DragItem,
-    DragItemProps
+    DragItemProps,
+    SideNavItem
 };

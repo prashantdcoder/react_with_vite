@@ -1,4 +1,5 @@
-import { DragItem, ICheckBoxNode } from "../utils/types";
+import { ClipboardCheck } from "lucide-react";
+import { DragItem, ICheckBoxNode, SideNavItem } from "../utils/types";
 
 const shoppingList: ICheckBoxNode[] = [
     {
@@ -486,4 +487,36 @@ const dragAndDropList: DragItem[] = [
     }
 ]
 
-export { permissions, shoppingList, groceries, userManagement, printers, dragAndDropList };
+const sideNavItems: SideNavItem[] = [
+    {
+        title: "Checkbox Problem",
+        url: "/",
+        icon: ClipboardCheck,
+    },
+    {
+        title: "Theme Change Problem",
+        url: "/theme-problem",
+        icon: ClipboardCheck,
+    },
+    {
+        title: "Drag and Drop List Problem",
+        url: "/drag-list-problem",
+        icon: ClipboardCheck,
+    },
+    {
+        title: "Kanban Problem",
+        url: "/kanban-problem",
+        icon: ClipboardCheck,
+    }
+];
+
+export {
+    dragAndDropList,
+    groceries,
+    permissions,
+    printers,
+    shoppingList,
+    userManagement,
+    sideNavItems
+};
+
