@@ -6,18 +6,6 @@ import items from "../../data/testData/dragAndDropListData.json";
 describe("DragItem Component", () => {
 
     const mockItem = [...items][0];
-    /**
-     * should render DragItem component with correct title and content
-should have draggable attribute true when isDraggable is true
-should have draggable attribute false when isDraggable is false
-should call onDragStart when drag enters the element
-should call onDragOver when drag ends the element
-should render correct test ids for title and content elements
-should render outlined Item variant correctly
-should attach ref to the div element
-should not trigger drag events when isDraggable is false
-should match snapshot for consistent UI rendering
-     */
 
     it("should render DragItem component correctly", () => {
         const onDragMock = jest.fn();
