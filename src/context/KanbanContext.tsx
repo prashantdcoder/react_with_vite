@@ -26,6 +26,9 @@ const KanbanProvider = ({ children, title, columns: initialColumns }: KanbanProv
         const destinationColumnId: string = destinationRef.current;
         const taskId: string = moveTaskIdRef.current;
         const extractItemFromSource: KanbanColumnItem = columns.find(col => col.id === sourceColumnId)?.items.find(item => item.id === taskId);
+        if (sourceColumnId === destinationColumnId) {
+            return;
+        }
         const updatedColumns = columns.map((col) => {
             if (col.id === sourceColumnId) {
                 return {

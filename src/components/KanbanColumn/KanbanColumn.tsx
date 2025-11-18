@@ -11,13 +11,19 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
         e.preventDefault();
     }
 
+    const headingColor: Record<string, string>= {
+        'todo': 'text-blue-500',
+        'inprogress': 'text-yellow-500',
+        'completed': 'text-green-500'
+    } 
+
     return (
         <div data-container-id={column.id}
             onDragOver={columnDragOver}
             onDrop={(e) => onDrop(e, column.id)}
             className='block border p-4 rounded-md shadow-md bg-white w-64'>
             <div className='block'>
-                <h1 data-testid={`drag-item-title-${column.id}`}>{column.title}</h1>
+                <h1 data-testid={`drag-item-title-${column.id}`} className={`${headingColor[column.id]} text-2xl font-semibold`}>{column.title}</h1>
                 <div data-testid={`drag-item-content-${column.id}`} className='flex flex-col gap-2 mt-2'>
                     {
                         column.items &&

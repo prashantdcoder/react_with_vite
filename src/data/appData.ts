@@ -553,6 +553,27 @@ const kanbanBoardColumns: KanbanColumn[] = [
                 content: 'Add Jest unit tests for the product module to increase coverage.'
             }
         ]
+    },
+    {
+        id: 'completed',
+        title: 'Completed',
+        items: [
+            {
+                id: generateUniqueId(),
+                heading: 'Deploy New Version to Staging',
+                content: 'v2.3.1 deployed successfully for internal QA testing.'
+            },
+            {
+                id: generateUniqueId(),
+                heading: 'Set Up CI/CD Pipeline',
+                content: 'Configured GitHub Actions for automated tests and deployments.'
+            },
+            {
+                id: generateUniqueId(),
+                heading: 'API Documentation Update',
+                content: 'Updated Swagger docs for user and product services.'
+            }
+        ]
     }
 ];
 
