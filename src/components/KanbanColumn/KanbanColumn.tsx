@@ -2,6 +2,7 @@ import React from 'react';
 import useKanban from '../../hooks/useKanban';
 import { KanbanColumnProps } from '../../utils/types';
 import KanbanColumnItem from '../KanbanColumnItem/KanbanColumnItem';
+import KanbanColumnNoTask from '../KanbanColumnNoTask/KanbanColumnNoTask';
 
 const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
 
@@ -38,6 +39,9 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
                                 />
                             )
                         })
+                    }
+                    {
+                        column.items.length === 0 && <KanbanColumnNoTask />
                     }
                 </div>
             </div>
