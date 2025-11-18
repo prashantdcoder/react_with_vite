@@ -1,5 +1,6 @@
 import { ClipboardCheck } from "lucide-react";
-import { DragItem, ICheckBoxNode, SideNavItem } from "../utils/types";
+import { generateUniqueId } from "../utils/appUtils";
+import { DragItem, ICheckBoxNode, KanbanColumn, SideNavItem } from "../utils/types";
 
 const shoppingList: ICheckBoxNode[] = [
     {
@@ -510,13 +511,56 @@ const sideNavItems: SideNavItem[] = [
     }
 ];
 
+const kanbanBoardColumns: KanbanColumn[] = [
+    {
+        id: 'todo',
+        title: 'To Do',
+        items: [
+            {
+                id: generateUniqueId(),
+                heading: 'Create Login API',
+                content: 'Design and develop the authentication endpoint with JWT tokens.'
+            },
+            {
+                id: generateUniqueId(),
+                heading: 'Prepare Sprint Report',
+                content: 'Compile tasks completed and pending for this sprint.'
+            },
+            {
+                id: generateUniqueId(),
+                heading: 'Design Dashboard UI',
+                content: 'Create Figma wireframes for the analytics dashboard.'
+            }
+        ]
+    },
+    {
+        id: 'inprogress',
+        title: 'In Progress',
+        items: [
+            {
+                id: generateUniqueId(),
+                heading: 'Fix Payment Failure Bug',
+                content: 'Investigate transaction timeout occurring for UPI payments.'
+            },
+            {
+                id: generateUniqueId(),
+                heading: 'Refactor User Service',
+                content: 'Improve code quality and reduce duplication in user-related APIs.'
+            },
+            {
+                id: generateUniqueId(),
+                heading: 'Write Unit Tests',
+                content: 'Add Jest unit tests for the product module to increase coverage.'
+            }
+        ]
+    }
+];
+
+
 export {
     dragAndDropList,
-    groceries,
-    permissions,
+    groceries, kanbanBoardColumns, permissions,
     printers,
-    shoppingList,
-    userManagement,
-    sideNavItems
+    shoppingList, sideNavItems, userManagement
 };
 

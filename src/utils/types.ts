@@ -23,8 +23,15 @@ interface SideNavItem {
 interface KanbanColumn {
     id: string;
     title: string;
-    items: DragItem[];
+    items: KanbanColumnItem[];
 }
+
+interface KanbanColumnItem {
+    id: string;
+    heading: string,
+    content: string;
+}
+
 
 
 /********************* Props ************************************ */
@@ -50,9 +57,15 @@ interface DragItemProps {
 interface KanbanContextProp {
     title: string;
     children?: React.ReactNode;
+    columns: KanbanColumn[];
+    setColumnsData?: (columns: KanbanColumn[]) => void;
+    onDragStart?: (e: React.DragEvent<HTMLDivElement>, sourceId: string) => void;
+    onDrop?: (e: React.DragEvent<HTMLDivElement>, sourceId: string) => void;
 }
 
-interface KanbanBoardProps {
+interface KanbanProviderProps {
+    title: string;
+    children?: React.ReactNode;
     columns: KanbanColumn[];
 }
 
@@ -60,10 +73,17 @@ interface KanbanColumnProps {
     column: KanbanColumn;
 }
 
+interface Endpoint {
+    sourceId: string;
+    destinationId: string;
+}
+
 interface KanbanColumnItemProps {
-    id: number;
+    columnId?: string;
+    id: string;
     title: string;
     content: string;
+    onDragStart: (e: React.DragEvent<HTMLDivElement>, sourceId: string) => void;
 }
 
 /********************* Enums************************************ */
@@ -78,8 +98,10 @@ export {
     DragContainerProps,
     DragItem,
     DragItemProps,
-    ICheckBoxNode, KanbanBoardProps, KanbanColumn, KanbanColumnItemProps, KanbanColumnProps, KanbanContextProp, SideNavItem,
-    ThemeContextProp,
-    ThemeMode
+    Endpoint, ICheckBoxNode,
+    KanbanColumn, KanbanColumnItem, KanbanColumnItemProps,
+    KanbanColumnProps, KanbanContextProp,
+    KanbanProviderProps, SideNavItem,
+    ThemeContextProp, ThemeMode
 };
 
