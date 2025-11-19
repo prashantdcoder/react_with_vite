@@ -8,7 +8,7 @@
     "build": "vite build",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "test:ci": "jest --coverage --ci",
+    "test:ci": "rmdir /s /q coverage && jest --coverage --ci",
     "lint": "eslint .",
     "preview": "vite preview"
   },
