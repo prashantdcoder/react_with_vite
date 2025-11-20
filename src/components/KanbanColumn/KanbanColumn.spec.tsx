@@ -99,10 +99,11 @@ describe("KanbanColumn Component", () => {
     it("should call onDrop from useKanban when a drop event occurs", () => {
         const mockOnDrop = jest.fn();
         const mockOnDragStart = jest.fn();
-        const mockPreventDefault = jest.fn();
+        const mockOnDragOver = jest.fn();
         (useKanban as jest.Mock).mockReturnValue({
             onDrop: mockOnDrop,
             onDragStart: mockOnDragStart,
+            onDragOver: mockOnDragOver,
             columns: [...mockKanbanColumns]
         });
         const column = mockKanbanColumns[0];
@@ -113,10 +114,10 @@ describe("KanbanColumn Component", () => {
         );
         const columnElement = getByTestId(`kanban-column-container-${column.id}`) as HTMLDivElement;
         const event = {
-            preventDefault: mockPreventDefault,
+            preventDefault: mockOnDragOver,
         }
         fireEvent.dragOver(columnElement, event);
-        // expect(event.preventDefault).toHaveBeenCalled();
+        expect(event.preventDefault).toHaveBeenCalled();
         fireEvent.drop(columnElement, {
             dataTransfer: {
                 getData: () => '',

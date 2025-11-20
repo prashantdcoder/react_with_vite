@@ -11,14 +11,18 @@ const KanbanProvider = ({ children, title, columns: initialColumns }: KanbanProv
     const destinationRef = React.useRef<string>('');
     const moveTaskIdRef = React.useRef<string>('');
 
-    const onDragStart = (e: React.DragEvent<HTMLDivElement>, sourceId: string) => {
+    const onDragStart = (e: React.DragEvent<HTMLDivElement>, sourceId: string): void => {
         moveTaskIdRef.current = e.currentTarget.dataset.itemId;
         sourceRef.current = sourceId;
     };
 
-    const onDrop = (e: React.DragEvent<HTMLDivElement>, destinationId: string) => {
+    const onDrop = (e: React.DragEvent<HTMLDivElement>, destinationId: string): void => {
         destinationRef.current = destinationId;
         moveTask();
+    };
+
+    const onDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
+        e.preventDefault();
     };
 
     const moveTask = () => {
@@ -54,7 +58,7 @@ const KanbanProvider = ({ children, title, columns: initialColumns }: KanbanProv
     };
 
     return (
-        <KanbanContext.Provider value={{ title, onDragStart, onDrop, setColumnsData, columns }}>
+        <KanbanContext.Provider value={{ title, onDragStart, onDrop, setColumnsData, columns, onDragOver }}>
             {children}
         </KanbanContext.Provider>
     );

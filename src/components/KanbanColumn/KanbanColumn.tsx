@@ -6,7 +6,7 @@ import KanbanColumnNoTask from '../KanbanColumnNoTask/KanbanColumnNoTask';
 
 const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
 
-    const { onDragStart, onDrop } = useKanban();
+    const { onDragStart, onDrop,onDragOver } = useKanban();
 
     const headingColor: Record<string, string> = {
         'todo': 'text-blue-500',
@@ -14,14 +14,10 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
         'completed': 'text-green-500'
     }
 
-    const columnDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-    }
-
     return (
         <div data-container-id={column.id}
             data-testid={`kanban-column-container-${column.id}`}
-            onDragOver={columnDragOver}
+            onDragOver={onDragOver}
             onDrop={(e) => onDrop(e, column.id)}
             className='block border p-4 rounded-md shadow-md bg-white w-64'>
             <div className='block'>
