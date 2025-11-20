@@ -8,14 +8,15 @@ const KanbanColumnItem: React.FC<KanbanColumnItemProps> = ({ columnId, id, conte
     return (
         <Item
             data-item-id={id}
+            data-testid={`kanban-column-item-${id}`}
             draggable={true}
             variant="outline"
             className="cursor-move bg-gray-50"
             onDragStart={(e) => onDragStart(e, columnId)}
         >
             <ItemContent>
-                <ItemTitle data-testid={`drag-item-title-${id}`}>{title}</ItemTitle>
-                <ItemDescription data-testid={`drag-item-content-${id}`}>
+                <ItemTitle data-testid={`kanban-column-item-title-${id}`}>{title}</ItemTitle>
+                <ItemDescription data-testid={`kanban-column-item-content-${id}`}>
                     {content}
                 </ItemDescription>
             </ItemContent>

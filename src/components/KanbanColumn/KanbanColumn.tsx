@@ -8,14 +8,14 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
 
     const { onDragStart, onDrop } = useKanban();
 
-    const columnDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-    }
-
     const headingColor: Record<string, string> = {
         'todo': 'text-blue-500',
         'inprogress': 'text-yellow-500',
         'completed': 'text-green-500'
+    }
+
+    const columnDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
     }
 
     return (
@@ -25,7 +25,7 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
             onDrop={(e) => onDrop(e, column.id)}
             className='block border p-4 rounded-md shadow-md bg-white w-64'>
             <div className='block'>
-                <h1 data-testid={`kanban-column-title-${column.id}`} className={`${headingColor[column.id]} text-2xl font-semibold`}>{column.title}</h1>
+                <h1 data-testid={`kanban-column-title-${column.id}`} className={`${headingColor[column.id] || 'text-red-500'} text-2xl font-semibold`}>{column.title}</h1>
                 <div data-testid={`kanban-column-content-${column.id}`} className='flex flex-col gap-2 mt-2'>
                     {
                         column.items &&
