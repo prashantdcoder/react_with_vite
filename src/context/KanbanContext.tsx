@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { generateUniqueId } from "../utils/appUtils";
-import { KanbanColumn, KanbanColumnItem, KanbanContextProp, KanbanProviderProps } from "../utils/types";
+import { KanbanColumnItem, KanbanContextProp, KanbanProviderProps } from "../utils/types";
 
 
 export const KanbanContext = createContext<KanbanContextProp>(null);
@@ -53,12 +53,8 @@ const KanbanProvider = ({ children, title, columns: initialColumns }: KanbanProv
         setColumns(updatedColumns);
     };
 
-    const setColumnsData = (columns: KanbanColumn[]) => {
-        setColumns(columns);
-    };
-
     return (
-        <KanbanContext.Provider value={{ title, onDragStart, onDrop, setColumnsData, columns, onDragOver }}>
+        <KanbanContext.Provider value={{ title, onDragStart, onDrop, columns, onDragOver }}>
             {children}
         </KanbanContext.Provider>
     );

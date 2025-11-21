@@ -9,9 +9,23 @@ const useKanban = () => {
         throw new Error('KanbanColumn must be used within a KanbanProvider');
     }
 
-    const { title, children, onDragStart, onDrop, setColumnsData, columns, onDragOver } = kanbanContext;
+    const {
+        title,
+        children,
+        onDragStart,
+        onDrop,
+        columns,
+        onDragOver
+    } = kanbanContext;
 
-    return { title, children, onDragStart, onDrop, setColumnsData, columns, onDragOver };
+    return {
+        title,
+        children,
+        onDragStart,
+        onDrop,
+        columns,
+        onDragOver
+    };
 };
 
 export default useKanban;

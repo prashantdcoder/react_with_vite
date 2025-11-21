@@ -58,7 +58,6 @@ interface KanbanContextProp {
     title: string;
     children?: React.ReactNode;
     columns: KanbanColumn[];
-    setColumnsData?: (columns: KanbanColumn[]) => void;
     onDragStart?: (e: React.DragEvent<HTMLDivElement>, sourceId: string) => void;
     onDrop?: (e: React.DragEvent<HTMLDivElement>, sourceId: string) => void;
     onDragOver?: (e: React.DragEvent<HTMLDivElement>) => void;
